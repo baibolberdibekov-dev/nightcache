@@ -468,7 +468,7 @@ func searchYouTube(ctx context.Context, t Track) ([]YTResult, error) {
 	for _, client := range clients {
 		args := []string{
 			"--no-warnings", "--skip-download", "--flat-playlist",
-			"--print", "%(id)s\\t%(title)s\\t%(duration)s", "--playlist-end", strconv.Itoa(maxSearchResults),
+			"--print", "%(id)s\t%(title)s\t%(duration)s", "--playlist-end", strconv.Itoa(maxSearchResults),
 			"--js-runtimes", "deno", "--remote-components", "ejs:github",
 			"--extractor-args", "youtube:player_client=" + client,
 			"ytsearch" + strconv.Itoa(maxSearchResults) + ":" + q,
