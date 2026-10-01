@@ -31,9 +31,9 @@ const (
 )
 
 var (
-	playlistRE = regexp.MustCompile(`(?i)^https?://(?:open\\.)?spotify\\.com/playlist/([A-Za-z0-9]+)`)
-	nextDataRE = regexp.MustCompile(`(?s)<script[^>]*\\bid=["']__NEXT_DATA__["'][^>]*>(.*?)</script>`)
-	wsRE       = regexp.MustCompile(`\\s+`)
+	playlistRE = regexp.MustCompile(`(?i)^https?://(?:open\.)?spotify\.com/(?:embed/)?playlist/([A-Za-z0-9]+)(?:[/?#].*)?$`)
+	nextDataRE = regexp.MustCompile(`(?s)<script[^>]*\bid=["']__NEXT_DATA__["'][^>]*>(.*?)</script>`)
+	wsRE       = regexp.MustCompile(`\s+`)
 	httpClient = &http.Client{Timeout: 90 * time.Second}
 
 	jobMu  sync.Mutex
@@ -478,7 +478,7 @@ func searchYouTube(ctx context.Context, t Track) ([]YTResult, error) {
 			var res []YTResult
 			sc := bufio.NewScanner(strings.NewReader(out))
 			for sc.Scan() {
-				parts := strings.SplitN(sc.Text(), "\\t", 3)
+				parts := strings.SplitN(sc.Text(), "\t", 3)
 				if len(parts) < 2 || strings.TrimSpace(parts[0]) == "" {
 					continue
 				}
