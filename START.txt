@@ -1,0 +1,9 @@
+NIGHTCACHE — WEB VERSION
+
+1. Upload this folder to a GitHub repository named Nightcache.
+2. In Render: New -> Web Service -> select the repository.
+3. Choose Docker, branch main, Free plan for testing.
+4. Deploy.
+5. Open the onrender.com URL Render gives you.
+
+For a first test, use a public playlist with 3–10 tracks.
